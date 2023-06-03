@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import "bootstrap/dist/css/bootstrap.css";
-import "./Home.css";
 
 library.add(faMagnifyingGlass);
 
-const HomePage = (props) => {
+const HeaderContent = (props) => {
   const [fieldValue, SetFieldValue] = useState(null);
 
   const handleChange = (event) => {
@@ -15,8 +13,12 @@ const HomePage = (props) => {
     SetFieldValue(filedValue);
   };
 
+  const handleClick = (event) => {
+    event.preventDefault();
+  }
+
   return (
-    <div className="main-div">
+    <div>
       <div className="container-fluid">
         <h1 className="main-heading">SnapShot</h1>
         <form className="mb-4">
@@ -31,7 +33,9 @@ const HomePage = (props) => {
             />
             <button 
             disabled={fieldValue ? false : true} 
-            className="input-search">
+            className="input-search"
+            onClick={handleClick}
+            >
               <FontAwesomeIcon icon="fa-magnifying-glass" />
             </button>
           </div>
@@ -57,4 +61,4 @@ const HomePage = (props) => {
   );
 };
 
-export default HomePage;
+export default HeaderContent;
